@@ -13,5 +13,18 @@ app.use(cors());
 
 
 
+app.get('/location', (req, res) => {
+  const locationData = require('./data/location.json');
+  let resultLocation = new Location(locationData[0]);
+  res.send(resultLocation);
+
+});
+
+function Location(obj) {
+  this.search_query = obj.display_name;
+  this.formatted_query = obj.display_name;
+  this.latitude = obj.lat;
+  this.longitude = obj.lon;
+}
 
 app.listen(PORT, console.log(`we are up on ${PORT}`));
