@@ -3,7 +3,7 @@
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+This application is server which provides data for the City Explorer application. It will allow users to search for a location, then present a map and interesting information about the area. This will be done using data from APIs that my server fetches and manages.
 
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
@@ -30,3 +30,13 @@ Start time: 3:15pm
 Finish time: 4:15
 
 Actual time needed to complete: 1 hour
+
+### Locations
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 4:25 pm
+
+Finish time: 5:17 pm
+
+Actual time needed to complete: 52 minutes
