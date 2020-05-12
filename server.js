@@ -39,9 +39,12 @@ function Location(obj) {
   this.longitude = obj.lon;
 }
 
+
 function Weather(obj) {
   this.forecast = obj.weather.description;
-  this.time = obj.datetime;
+  let xDate = Date.parse(obj.datetime);
+  let dateTime = new Date(xDate);
+  this.time = dateTime.toDateString();
 }
 
 app.listen(PORT, console.log(`we are up on ${PORT}`));
