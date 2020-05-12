@@ -25,7 +25,7 @@ app.get('/weather', (req, res) => {
   const weatherData = require('./data/weather.json');
   const theWeather = [];
   let weatherStats = weatherData.data;
-  weatherStats.forEach(obj => {
+  weatherStats.map(obj =>{
     let resultWeather = new Weather(obj);
     theWeather.push(resultWeather);
   });
