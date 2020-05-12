@@ -18,6 +18,10 @@ This application is server which provides data for the City Explorer application
 
 05-11-2020 20:27 Added weather functionality
 
+05-12-2020 15:15 Reformated the date for the weather info
+
+
+
 
 ## Credits and Collaborations 
 Collaborated with Dave Wolfe on this project.
@@ -48,8 +52,18 @@ Actual time needed to complete: 52 minutes
 
 Estimate of time needed to complete: 1 hour
 
-Start time: 5:23
+Start time: 5:23 pm
 
-Finish time: 8:22 (but took break after starting)
+Finish time: 8:22 pm (but took break after starting)
 
-Actual time needed to complete: 1 hour
+Actual time needed to complete: 45 minutes
+
+### Location API
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 3:30 pm
+
+Finish time: 4:22 pm
+
+Actual time needed to complete: 52 minutes
