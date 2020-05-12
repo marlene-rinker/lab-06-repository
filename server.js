@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 'use strict';
 
 // define the packages
@@ -20,11 +21,27 @@ app.get('/location', (req, res) => {
 
 });
 
+app.get('/weather', (req, res) => {
+  const weatherData = require('./data/weather.json');
+  const theWeather = [];
+  let weatherStats = weatherData.data;
+  weatherStats.forEach(obj => {
+    let resultWeather = new Weather(obj);
+    theWeather.push(resultWeather);
+  });
+  res.send(theWeather);
+});
+
 function Location(obj) {
   this.search_query = obj.display_name;
   this.formatted_query = obj.display_name;
   this.latitude = obj.lat;
   this.longitude = obj.lon;
+}
+
+function Weather(obj) {
+  this.forecast = obj.weather.description;
+  this.time = obj.datetime;
 }
 
 app.listen(PORT, console.log(`we are up on ${PORT}`));
