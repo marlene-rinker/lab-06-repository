@@ -20,11 +20,30 @@ app.get('/location', (req, res) => {
 
 });
 
+app.get('/weather', (req, res) => {
+  const weatherData = require('./data/weather.json');
+  const theWeather = [];
+  let weatherStats = weatherData.data;
+  // console.log(weatherData.data);
+  weatherStats.forEach(obj => {
+    let resultWeather = new Weather (obj);
+    console.log(resultWeather);
+  });
+
+
+
+});
+
 function Location(obj) {
   this.search_query = obj.display_name;
   this.formatted_query = obj.display_name;
   this.latitude = obj.lat;
   this.longitude = obj.lon;
+}
+
+function Weather(obj) {
+  this.forecast = obj.forecast;
+  this.time = obj.time;
 }
 
 app.listen(PORT, console.log(`we are up on ${PORT}`));
