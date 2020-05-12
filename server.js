@@ -4,6 +4,7 @@
 // define the packages
 const express = require('express');
 const cors = require('cors');
+const superagent = require('superagent');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
@@ -14,14 +15,36 @@ app.use(cors());
 
 
 
-app.get('/location', (req, res) => {
-  const locationData = require('./data/location.json');
-  let resultLocation = new Location(locationData[0]);
-  res.send(resultLocation);
+app.get('/location', getLocation);
+app.get('/weather', getWeather);
 
-});
 
-app.get('/weather', (req, res) => {
+function getLocation (req, res) {
+  const cityToFind = req.query.city;
+  const urlOfApi = 'https://us1.locationiq.com/v1/search.php';
+
+  const queryParameters = { 
+    q:cityToFind,
+    key: process.env.GEOCODE_API_KEY,
+    format: 'json'
+  };
+
+  superagent.get(urlOfApi)
+    .query(queryParameters)
+    .then(resultFromLocationApi =>{
+      let resultLocation = new Location(resultFromLocationApi.body[0]);
+      console.log(resultLocation);
+      res.send(resultLocation);
+    })
+    .catch(error => {
+      console.log(error);
+      res.send(error).status(500);
+    });  
+}
+
+
+
+function getWeather (req, res) {
   const weatherData = require('./data/weather.json');
   const theWeather = [];
   let weatherStats = weatherData.data;
@@ -30,7 +53,7 @@ app.get('/weather', (req, res) => {
     theWeather.push(resultWeather);
   });
   res.send(theWeather);
-});
+}
 
 function Location(obj) {
   this.search_query = obj.display_name;
