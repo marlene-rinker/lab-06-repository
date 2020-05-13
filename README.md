@@ -30,6 +30,7 @@ This application is server which provides data for the City Explorer application
 
 ## Credits and Collaborations 
 Collaborated with Dave Wolfe on this project.
+[Stackoverflow for splicing a string](https://stackoverflow.com/questions/10272773/split-string-on-the-first-white-space-occurrence)
 
 
 
