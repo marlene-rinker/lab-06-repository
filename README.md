@@ -26,6 +26,9 @@ This application is server which provides data for the City Explorer application
 
 05-12-2020 21:05 Added trails functionality
 
+05-13-2020 15:55 Set up database
+
+
 
 
 ## Credits and Collaborations 
@@ -91,5 +94,15 @@ Estimate of time needed to complete: 1 hour
 Start time: 5:30 pm (break at 5:50)
 
 Finish time: 9:02
+
+Actual time needed to complete: 40 minutes
+
+### Database
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 3:10
+
+Finish time: 3:50
 
 Actual time needed to complete: 40 minutes
