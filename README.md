@@ -1,6 +1,6 @@
 # lab-06-repository
 **Author**: Marlene Rinker
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 1.2.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 This application is server which provides data for the City Explorer application. It will allow users to search for a location, then present a map and interesting information about the area. This will be done using data from APIs that my server fetches and manages.
@@ -23,6 +23,8 @@ This application is server which provides data for the City Explorer application
 05-12-2020 16:30 Changed location to use the LocationIQ api
 
 05-12-2020 17:15 Changed weather to use the Weatherbit api
+
+05-12-2020 21:05 Added trails functionality
 
 
 
@@ -87,6 +89,6 @@ Estimate of time needed to complete: 1 hour
 
 Start time: 5:30 pm (break at 5:50)
 
-Finish time: 
+Finish time: 9:02
 
-Actual time needed to complete: 
+Actual time needed to complete: 40 minutes

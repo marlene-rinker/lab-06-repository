@@ -63,7 +63,6 @@ function getWeather (req, res) {
         let resultWeather = new Weather(obj);
         return resultWeather;
       })
-      console.log('weather result array' + result);
       res.send(result);
     })
     .catch(error => {
@@ -85,11 +84,6 @@ function getTrails (req, res) {
   superagent.get(urlOfApi)
     .query(queryForSuper)
     .then(resultFromSuper => {
-      // let weatherStats = resultFromSuper.body.data;
-      // let result = weatherStats.map(obj =>{
-      //   let resultWeather = new Weather(obj);
-      //   return resultWeather;
-      // })
       let trailData = resultFromSuper.body.trails;
       let result = trailData.map(obj =>{
         let resultTrail = new Trail(obj);
@@ -119,7 +113,8 @@ function Weather(obj) {
   let dateTime = new Date(xDate);
   this.time = dateTime.toDateString();
 }
-//TODO: assign values to the trail location based on data returned from the api
+
+
 function Trail(obj) {
   this.name = obj.name;
   this.location = obj.location;
@@ -129,8 +124,9 @@ function Trail(obj) {
   this.summary = obj.summary;
   this.trail_url = obj.url;
   this.conditions = obj.conditionDetails;
-  this.condition_date = obj.conditionDate;
-  this.condition_time = obj.conditionDate;
+  let tDate = obj.conditionDate;
+  this.condition_date = tDate.split(/\s(.+)/)[0];
+  this.condition_time = tDate.split(/\s(.+)/)[1];
 }
 
 app.listen(PORT, console.log(`we are up on ${PORT}`));
