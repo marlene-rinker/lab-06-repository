@@ -63,6 +63,7 @@ function getWeather (req, res) {
         let resultWeather = new Weather(obj);
         return resultWeather;
       })
+      console.log('weather result array' + result);
       res.send(result);
     })
     .catch(error => {
@@ -95,7 +96,8 @@ function getTrails (req, res) {
         return resultTrail;
       })
       console.log(resultFromSuper.body.trails);
-      // res.send(result);
+      console.log(result);
+      res.send(result);
     })
     .catch(error => {
       console.log(error);
@@ -119,16 +121,16 @@ function Weather(obj) {
 }
 //TODO: assign values to the trail location based on data returned from the api
 function Trail(obj) {
-  this.name;
-  this.location;
-  this.length;
-  this.stars;
-  this.star_votes;
-  this.summary;
-  this.trail_url;
-  this.conditions;
-  this.condition_date;
-  this.condition_time;
+  this.name = obj.name;
+  this.location = obj.location;
+  this.length = obj.length;
+  this.stars = obj.stars;
+  this.star_votes = obj.starVotes;
+  this.summary = obj.summary;
+  this.trail_url = obj.url;
+  this.conditions = obj.conditionDetails;
+  this.condition_date = obj.conditionDate;
+  this.condition_time = obj.conditionDate;
 }
 
 app.listen(PORT, console.log(`we are up on ${PORT}`));
