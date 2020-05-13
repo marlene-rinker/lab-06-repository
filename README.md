@@ -20,6 +20,9 @@ This application is server which provides data for the City Explorer application
 
 05-12-2020 15:15 Reformated the date for the weather info
 
+05-12-2020 16:30 Changed location to use the LocationIQ api
+
+05-12-2020 17:15 Changed weather to use the Weatherbit api
 
 
 
@@ -67,3 +70,13 @@ Start time: 3:30 pm
 Finish time: 4:22 pm
 
 Actual time needed to complete: 52 minutes
+
+### Weather API
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 4:45 pm
+
+Finish time: 5:06 pm
+
+Actual time needed to complete: 21 minutes

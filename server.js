@@ -45,14 +45,31 @@ function getLocation (req, res) {
 
 
 function getWeather (req, res) {
-  const weatherData = require('./data/weather.json');
+
+  const urlOfApi = 'https://api.weatherbit.io/v2.0/forecast/daily';
+  const queryForSuper = {
+    lat: req.query.latitude,
+    lon: req.query.longitude,
+    key: process.env.WEATHER_API_KEY
+  };
+
   const theWeather = [];
-  let weatherStats = weatherData.data;
-  weatherStats.map(obj =>{
-    let resultWeather = new Weather(obj);
-    theWeather.push(resultWeather);
-  });
-  res.send(theWeather);
+
+  superagent.get(urlOfApi)
+    .query(queryForSuper)
+    .then(resultFromSuper => {
+      let weatherStats = resultFromSuper.body.data;
+      weatherStats.map(obj =>{
+        let resultWeather = new Weather(obj);
+        theWeather.push(resultWeather);
+      })
+      console.log(theWeather);
+      res.send(theWeather);
+    })
+    .catch(error => {
+      console.log(error);
+      res.send(error).status(500); 
+    });  
 }
 
 function Location(obj) {
