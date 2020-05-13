@@ -53,18 +53,17 @@ function getWeather (req, res) {
     key: process.env.WEATHER_API_KEY
   };
 
-  const theWeather = [];
 
   superagent.get(urlOfApi)
     .query(queryForSuper)
     .then(resultFromSuper => {
       let weatherStats = resultFromSuper.body.data;
-      weatherStats.map(obj =>{
+      let result = weatherStats.map(obj =>{
         let resultWeather = new Weather(obj);
-        theWeather.push(resultWeather);
+        return resultWeather;
       })
-      console.log(theWeather);
-      res.send(theWeather);
+      console.log(result);
+      res.send(result);
     })
     .catch(error => {
       console.log(error);
