@@ -80,3 +80,13 @@ Start time: 4:45 pm
 Finish time: 5:06 pm
 
 Actual time needed to complete: 21 minutes
+
+### Trail API
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 5:30 pm (break at 5:50)
+
+Finish time: 
+
+Actual time needed to complete: 

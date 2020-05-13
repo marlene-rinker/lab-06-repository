@@ -17,6 +17,7 @@ app.use(cors());
 
 app.get('/location', getLocation);
 app.get('/weather', getWeather);
+app.get('/trails', getTrails);
 
 
 function getLocation (req, res) {
@@ -62,8 +63,39 @@ function getWeather (req, res) {
         let resultWeather = new Weather(obj);
         return resultWeather;
       })
-      console.log(result);
       res.send(result);
+    })
+    .catch(error => {
+      console.log(error);
+      res.send(error).status(500); 
+    });  
+}
+
+function getTrails (req, res) {
+
+  const urlOfApi = 'https://www.hikingproject.com/data/get-trails';
+  const queryForSuper = {
+    lat: req.query.latitude,
+    lon: req.query.longitude,
+    key: process.env.TRAIL_API_KEY
+  };
+
+
+  superagent.get(urlOfApi)
+    .query(queryForSuper)
+    .then(resultFromSuper => {
+      // let weatherStats = resultFromSuper.body.data;
+      // let result = weatherStats.map(obj =>{
+      //   let resultWeather = new Weather(obj);
+      //   return resultWeather;
+      // })
+      let trailData = resultFromSuper.body.trails;
+      let result = trailData.map(obj =>{
+        let resultTrail = new Trail(obj);
+        return resultTrail;
+      })
+      console.log(resultFromSuper.body.trails);
+      // res.send(result);
     })
     .catch(error => {
       console.log(error);
@@ -84,6 +116,19 @@ function Weather(obj) {
   let xDate = Date.parse(obj.datetime);
   let dateTime = new Date(xDate);
   this.time = dateTime.toDateString();
+}
+//TODO: assign values to the trail location based on data returned from the api
+function Trail(obj) {
+  this.name;
+  this.location;
+  this.length;
+  this.stars;
+  this.star_votes;
+  this.summary;
+  this.trail_url;
+  this.conditions;
+  this.condition_date;
+  this.condition_time;
 }
 
 app.listen(PORT, console.log(`we are up on ${PORT}`));
