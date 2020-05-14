@@ -23,6 +23,7 @@ client.connect();
 app.get('/location', getLocation);
 app.get('/weather', getWeather);
 app.get('/trails', getTrails);
+app.get('/movies', getMovies);
 
 
 function getLocation (req, res) {
@@ -106,8 +107,33 @@ function getTrails (req, res) {
         let resultTrail = new Trail(obj);
         return resultTrail;
       })
-      // console.log(resultFromSuper.body.trails);
-      console.log(result);
+      res.send(result);
+    })
+    .catch(error => {
+      console.log(error);
+      res.send(error).status(500); 
+    });  
+}
+
+function getMovies (req, res) {
+
+  console.log(req.query);
+
+  const urlOfApi = 'https://api.themoviedb.org/3/search/movie';
+  const queryForSuper = {
+    api_key: process.env.MOVIE_API_KEY,
+    query: req.query.search_query
+  };
+
+
+  superagent.get(urlOfApi)
+    .query(queryForSuper)
+    .then(resultFromSuper => {
+      let movieData = resultFromSuper.body.results;
+      let result = movieData.map(obj =>{
+        let resultMovie = new Movie(obj);
+        return resultMovie;
+      })
       res.send(result);
     })
     .catch(error => {
@@ -129,6 +155,16 @@ function Weather(obj) {
   let xDate = Date.parse(obj.datetime);
   let dateTime = new Date(xDate);
   this.time = dateTime.toDateString();
+}
+
+function Movie(obj){
+  this.title = obj.title;
+  this.overview = obj.overview;
+  this.average_votes = obj.vote_average;
+  this.total_votes = obj.vote_count;
+  this.image_url = 'https://image.tmdb.org/t/p/w500'+obj.poster_path;
+  this.popularity = obj.popularity;
+  this.released_on = obj.release_date;
 }
 
 
