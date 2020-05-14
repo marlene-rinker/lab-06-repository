@@ -28,6 +28,8 @@ This application is server which provides data for the City Explorer application
 
 05-13-2020 15:55 Set up database
 
+05-13-2020 17:05 Added functionality to store locations in database
+
 
 
 
@@ -101,8 +103,18 @@ Actual time needed to complete: 40 minutes
 
 Estimate of time needed to complete: 1 hour
 
-Start time: 3:10
+Start time: 3:10 pm
 
-Finish time: 3:50
+Finish time: 3:50 pm
 
 Actual time needed to complete: 40 minutes
+
+### Server (Store Location in database)
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 4:00 pm
+
+Finish time: 5:00 pm
+
+Actual time needed to complete: 1 hour

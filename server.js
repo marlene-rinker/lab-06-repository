@@ -35,17 +35,29 @@ function getLocation (req, res) {
     format: 'json'
   };
 
-  superagent.get(urlOfApi)
-    .query(queryParameters)
-    .then(resultFromLocationApi =>{
-      let resultLocation = new Location(resultFromLocationApi.body[0]);
-      console.log(resultLocation);
-      res.send(resultLocation);
+  const sqlQuery = 'SELECT * FROM locations WHERE search_query=$1';
+  const sqlValues =[cityToFind];
+  client.query(sqlQuery, sqlValues)
+    .then(resultFromSql => {
+
+      if(resultFromSql.rowCount >0){
+        res.send(resultFromSql.rows[0]);
+      }else {
+        superagent.get(urlOfApi)
+          .query(queryParameters)
+          .then(resultFromLocationApi =>{
+            const resultLocation = new Location(resultFromLocationApi.body[0], cityToFind);
+            const sqlQuery = 'INSERT INTO locations (latitude, search_query, longitude, formatted_query) VALUES ($1, $2, $3, $4)';
+            const sqlValues = [resultLocation.latitude, resultLocation.search_query, resultLocation.longitude, resultLocation.formatted_query];
+            client.query(sqlQuery, sqlValues)
+            res.send(resultLocation);
+          })
+          .catch(error => {
+            console.log(error);
+            res.send(error).status(500);
+          });  
+      }
     })
-    .catch(error => {
-      console.log(error);
-      res.send(error).status(500);
-    });  
 }
 
 
@@ -94,7 +106,7 @@ function getTrails (req, res) {
         let resultTrail = new Trail(obj);
         return resultTrail;
       })
-      console.log(resultFromSuper.body.trails);
+      // console.log(resultFromSuper.body.trails);
       console.log(result);
       res.send(result);
     })
@@ -104,8 +116,8 @@ function getTrails (req, res) {
     });  
 }
 
-function Location(obj) {
-  this.search_query = obj.display_name;
+function Location(obj, search_query) {
+  this.search_query = search_query;
   this.formatted_query = obj.display_name;
   this.latitude = obj.lat;
   this.longitude = obj.lon;
