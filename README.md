@@ -30,6 +30,8 @@ This application is server which provides data for the City Explorer application
 
 05-13-2020 17:05 Added functionality to store locations in database
 
+05-13-2020 16:55 Added movies functionality
+
 
 
 
@@ -118,3 +120,13 @@ Start time: 4:00 pm
 Finish time: 5:00 pm
 
 Actual time needed to complete: 1 hour
+
+### Movies API
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 3:20 pm
+
+Finish time: 4:30 pm
+
+Actual time needed to complete: 1 hour 10 minutes
