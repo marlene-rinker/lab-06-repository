@@ -24,6 +24,7 @@ app.get('/location', getLocation);
 app.get('/weather', getWeather);
 app.get('/trails', getTrails);
 app.get('/movies', getMovies);
+app.get('/yelp', getRestaurants);
 
 
 function getLocation (req, res) {
@@ -142,6 +143,34 @@ function getMovies (req, res) {
     });  
 }
 
+
+function getRestaurants (req, res) {
+
+  const urlOfApi = 'https://api.yelp.com/v3/businesses/search';
+  const yelpQuery = req.query.search_query;
+  const queryForSuper = {
+    location: yelpQuery
+  };
+
+
+  superagent.get(urlOfApi)
+    .set('Authorization', `Bearer ${process.env.YELP_API_KEY}`)
+    .query(queryForSuper)
+    .then(resultFromSuper => {
+      console.log(resultFromSuper.body.businesses);
+      let restData = resultFromSuper.body.businesses;
+      let result = restData.map(obj =>{
+        let resultRest = new Restaurant(obj);
+        return resultRest;
+      })
+      res.send(result);
+    })
+    .catch(error => {
+      console.log(error);
+      res.send(error).status(500); 
+    });  
+}
+
 function Location(obj, search_query) {
   this.search_query = search_query;
   this.formatted_query = obj.display_name;
@@ -165,6 +194,14 @@ function Movie(obj){
   this.image_url = 'https://image.tmdb.org/t/p/w500'+obj.poster_path;
   this.popularity = obj.popularity;
   this.released_on = obj.release_date;
+}
+
+function Restaurant(obj){
+  this.name = obj.name;
+  this.image_url = obj.image_url;
+  this.price = obj.price;
+  this.rating = obj.rating;
+  this.url = obj.url;
 }
 
 
