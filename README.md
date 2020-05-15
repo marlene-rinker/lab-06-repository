@@ -1,6 +1,6 @@
 # lab-06-repository
 **Author**: Marlene Rinker
-**Version**: 1.2.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 1.3.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 This application is server which provides data for the City Explorer application. It will allow users to search for a location, then present a map and interesting information about the area. This will be done using data from APIs that my server fetches and manages.
@@ -34,13 +34,15 @@ This application is server which provides data for the City Explorer application
 
 05-13-2020 17:50 Added restaurants functionality
 
+05-13-2020 21:50 Refactored code into modules
+
 
 
 
 
 ## Credits and Collaborations 
 Collaborated with Dave Wolfe on this project.
-[Stackoverflow for splicing a string](https://stackoverflow.com/questions/10272773/split-string-on-the-first-white-space-occurrence)
+Used example from Nicco Ryan's code in a class code review to make a date string for weather (much cleaner than how I had originally done it)
 
 
 
@@ -149,8 +151,8 @@ Actual time needed to complete: 43 minutes
 
 Estimate of time needed to complete: 1 hour
 
-Start time: 
+Start time: 8:15 pm
 
-Finish time: 
+Finish time: 9:45 pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 1 hour and 30 minutes
