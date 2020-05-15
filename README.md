@@ -32,6 +32,9 @@ This application is server which provides data for the City Explorer application
 
 05-13-2020 16:55 Added movies functionality
 
+05-13-2020 17:50 Added restaurants functionality
+
+
 
 
 
@@ -130,3 +133,13 @@ Start time: 3:20 pm
 Finish time: 4:30 pm
 
 Actual time needed to complete: 1 hour 10 minutes
+
+### Yelp API
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 5:00 pm
+
+Finish time: 5:43 pm
+
+Actual time needed to complete: 43 minutes
