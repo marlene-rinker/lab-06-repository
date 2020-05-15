@@ -143,3 +143,14 @@ Start time: 5:00 pm
 Finish time: 5:43 pm
 
 Actual time needed to complete: 43 minutes
+
+
+### Modules
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 
+
+Finish time: 
+
+Actual time needed to complete: 
